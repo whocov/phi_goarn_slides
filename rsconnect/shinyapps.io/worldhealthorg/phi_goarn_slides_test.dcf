@@ -1,0 +1,12 @@
+name: phi_goarn_slides_test
+title: phi_goarn_slides
+username: worldhealthorg
+account: worldhealthorg
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12963593
+bundleId: 9682870
+url: https://worldhealthorg.shinyapps.io/phi_goarn_slides_test/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
