@@ -1,6 +1,6 @@
 This app produces the slides for the GOARN presentation that is produced weekly.
 
-It follows the same structure as the morning slides app: https://github.com/whocov/phi_goarn_slides
+It follows the same structure as the morning slides app: https://github.com/whocov/phi_morning_slides
 
 
 ### **Inputs (all Excel files):**
