@@ -60,7 +60,7 @@ read_file_pt <- function(x, sheets = c("Signals", "CountryLookUp")) {
     ~read_excel(
       x$datapath, 
       sheet = .x, 
-      col_types = c("date","text", 
+      col_types = c("text", 
                     "text", "text", "text", "text", "text", 
                     "date", "date", "date", "text", "text", 
                     "text", "text", "date", "text", "text", 
