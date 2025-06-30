@@ -60,7 +60,7 @@ read_file_pt <- function(x, sheets = c("Signals", "CountryLookUp")) {
     ~read_excel(
       x$datapath, 
       sheet = .x, 
-      col_types = c("text", 
+      col_types = c("date","text", 
                     "text", "text", "text", "text", "text", 
                     "date", "date", "date", "text", "text", 
                     "text", "text", "date", "text", "text", 
@@ -107,7 +107,7 @@ proc_file_dl <- function(x) {
 
 
 proc_file_pt <- function(x) {
-  colnames(x)[1] <- 'status'
+  colnames(x)[2] <- 'status'
   x %>% 
     janitor::clean_names() %>%
     mutate(
