@@ -2,7 +2,7 @@
 
 slide_signals <- function(pres, data) {
   
-  h1 <-glue::glue("List of signals/events in the past 24 hours")
+  h1 <-glue::glue("List of signals/events in the last 7 days")
   
   # h2 <- glue::glue("From of {format(date_min, '%d %b %Y')} to {format(date_max, '%d %b %Y')}")
   # h2 <- glue::glue("") #Placeholder left in case we want to add a subtitle later
@@ -20,9 +20,14 @@ slide_signals <- function(pres, data) {
     
     working_date <- as_date(max(data$modified_date, na.rm = TRUE))
     
-    date_lims <- weekend_parse(working_date)
-    date_max <- date_lims$max
-    date_min <- date_lims$min
+    # date_lims <- weekend_parse(working_date)
+    # date_max <- date_lims$max
+    # date_min <- date_lims$min
+    
+    # changed to show 7 previous days based on system date, unchanged old code above
+    
+    date_max <- as.Date(Sys.Date()-1)
+    date_min <- date_max -7
     
     time_int <- date_max - date_min 
     time_int <- as.double(time_int) * 24
@@ -134,7 +139,6 @@ slide_signals <- function(pres, data) {
       ph_with(value = headercolumn, location = ph_location_type(type = "title")) %>%
       ph_with(value = bps, location = ph_location_type(type = "body"))
   }
-  
   
   pres
 }

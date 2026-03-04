@@ -182,7 +182,7 @@ server <- function(input, output, session) {
   # --------------------------------------------------------------------------------------------------------------------
   # OUTPUT SLIDES
   output$dl_pres <- downloadHandler(filename = function() {
-    paste0("phi_goarn_slides_for_", Sys.Date()+1, ".pptx")
+    paste0("phi_goarn_slides_for_", Sys.Date(), ".pptx")
   }, content = function(file) {
     
     shinyalert::shinyalert(

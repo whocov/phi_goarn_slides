@@ -1,5 +1,8 @@
 
-slide_intro <- function(pres, data, eios_num = 0, inbox_num = 0, signals_num = 0) {
+slide_intro <- function(pres, data, data2, eios_num = 0, inbox_num = 0, signals_num = 0) {
+  if (is.null(data)) {
+    data <- dplyr::tibble(phi_list_date = as.Date(character()))
+  }
   
   # working_date <- as_date(max(data$modified_date, na.rm = TRUE))
   # 
@@ -45,7 +48,16 @@ slide_intro <- function(pres, data, eios_num = 0, inbox_num = 0, signals_num = 0
   bp_1_1 <- fpar(ftext(glue::glue("EIOS: {scales::comma(eios_num)} articles"), base_style))
   bp_1_2 <- fpar(ftext(glue::glue("Outbreak inbox: {scales::comma(inbox_num)} emails"), base_style))
 
-
+  date_max <- as.Date(Sys.Date()) - 1
+  if (lubridate::wday(date_max, week_start = 1) == 1) {
+    date_max <- lubridate::floor_date(date_max, "week", week_start = 1) - lubridate::days(3)
+  }
+  
+  
+  data <- data %>%
+    dplyr::filter(.data$phi_list_date >= lubridate::as_date(date_max))
+  
+  
   # bp_1 <- fpar(ftext("***INSERT NUMBER***", bold_style),
   #              ftext(glue::glue(" pieces of information screened in EIOS within the last {round(time_int)} hours"), base_style))
   
@@ -64,7 +76,7 @@ slide_intro <- function(pres, data, eios_num = 0, inbox_num = 0, signals_num = 0
                       nrow(data))
   
   bp_3 <- fpar(ftext(sm_events, bold_style),
-               ftext(" signals/events relevant for daily list of signals", base_style))
+               ftext(" signals/events relevant for this forum", base_style))
   
   
   # hl_events <- nrow(data)

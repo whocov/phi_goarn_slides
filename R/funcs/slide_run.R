@@ -6,7 +6,7 @@ slide_run <- function(sig,
                       # sig.olympic = NULL,
                       prod = NULL,
                       prod2 = NULL,
-                      pres = read_pptx(here::here("data", "template", "slide_template.pptx")),
+                      pres = read_pptx(here::here("data", "template", "slide_template_new.pptx")),
                       eios_num = 0,
                       inbox_num = 0,
                       signals_num = 0) {
@@ -22,7 +22,7 @@ slide_run <- function(sig,
   
   # -----------------------------------------------------------------------------
   
-  pres <-  read_pptx(here::here("data", "template", "slide_template.pptx"))
+  pres <-  read_pptx(here::here("data", "template", "slide_template_new.pptx"))
   print('working')
   
   pres <- slide_title(pres, sig)
@@ -58,6 +58,9 @@ slide_run <- function(sig,
       slide_products(prod, prod2)
   }
   
+  # Moves the contact us slide to last
+  move_slide(pres, index = 7, to = length(pres))
+ 
   return(pres)
   
 }

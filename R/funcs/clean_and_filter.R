@@ -84,7 +84,7 @@ signal_filter_date <- function(x, fil_date=NULL) {
   
   if (is.null(x)) return(NULL)
 
-  if (is.null(fil_date)) fil_date <- as_date(Sys.Date())-6
+  if (is.null(fil_date)) fil_date <- as_date(Sys.Date())-7
 
   # if (lubridate::wday(fil_date, week_start = 1) == 7) {
   #   min_date <- fil_date - days(2)
@@ -92,7 +92,8 @@ signal_filter_date <- function(x, fil_date=NULL) {
   #   min_date <- fil_date
   # }
   x <- x %>% 
-    filter(as_date(created_date) %in% range(as_date(Sys.Date())-6, as_date(Sys.Date())))
+    #filter(as_date(created_date) %in% range(as_date(Sys.Date())-7, as_date(Sys.Date())-1))
+    filter(as_date(created_date) >= as_date(Sys.Date())-7 &  as_date(created_date) <= as_date(Sys.Date())-1)
   
   if (nrow(x) == 0) return(NULL)
   

@@ -53,23 +53,45 @@ read_file <- function(x) {
 
 read_file_pt <- function(x, sheets = c("Signals", "CountryLookUp")) {
   
+  # if (is.null(x)) return(NULL)
+  # 
+  # excel_raw <-   purrr::map(
+  #   sheets,
+  #   ~read_excel(
+  #     x$datapath, 
+  #     sheet = .x, 
+  #     col_types = c("date","text", 
+  #                   "text", "text", "text", "text", "text", 
+  #                   "date", "date", "date", "text", "text", 
+  #                   "text", "text", "date", "text", "text", 
+  #                   "text", "date", "date", "date", "text", 
+  #                   "text", "text", "text", "text", "text", 
+  #                   "text", "date", "date", "date", "date", 
+  #                   "date", "date", "text", "date", "date", 
+  #                   "text", "text", "numeric", "numeric", 
+  #                   "numeric", "numeric", "text")
+  #   )
+  # )
+  # 
+  # excel_raw
   if (is.null(x)) return(NULL)
   
   excel_raw <-   purrr::map(
     sheets,
     ~read_excel(
       x$datapath, 
-      sheet = .x, 
-      col_types = c("date","text", 
-                    "text", "text", "text", "text", "text", 
-                    "date", "date", "date", "text", "text", 
-                    "text", "text", "date", "text", "text", 
-                    "text", "date", "date", "date", "text", 
-                    "text", "text", "text", "text", "text", 
-                    "text", "date", "date", "date", "date", 
-                    "date", "date", "text", "date", "date", 
-                    "text", "text", "numeric", "numeric", 
-                    "numeric", "numeric", "text")
+      sheet = .x #, 
+      #   col_types = c("text", 
+      #                 "text", "text", "text", "text", "text", 
+      #                 "date", "date", "date", "text", "text", 
+      #                 "text", "text", "date", "text", "text", 
+      #                 "text", "date", "date", "date", "text", 
+      #                 "text", "text", "text", "text", "text", 
+      #                 "text", "date", "date", "date", "date", 
+      #                 "date", "date", "text", "date", "date", 
+      #                 "text", "text", "numeric", "numeric", 
+      #                 "numeric", "numeric", "text")
+      # )
     )
   )
   
